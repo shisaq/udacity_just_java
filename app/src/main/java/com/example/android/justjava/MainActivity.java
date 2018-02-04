@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     int number = 0;
     int uniCost = 5;
     String toppingMsg = "Topping: None";
+    boolean isWhippedCreamChecked = false;
+    boolean isChocolateChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +33,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method checks if the checkbox is checked.
+     * This method checks if the checkbox of Whipped Cream is checked.
      */
-    public void toppingChecked(View view) {
-        // Is the view now checked?
-        boolean isChecked = ((CheckBox) view).isChecked();
+    public void checkWhippedCream(View view) {
+        isWhippedCreamChecked = ((CheckBox) view).isChecked();
+    }
 
-        // Check which checkbox was clicked
-        if (isChecked)
-            // Put some topping on java
-            toppingMsg = "Topping: " + getResources().getString(R.string.toppings);
-        else
-            // Remove the topping
-            toppingMsg = "Topping: None";
+    /**
+     * This method checks if the checkbox of chocolate is checked.
+     */
+    public void checkChocolate(View view) {
+        isChocolateChecked = ((CheckBox) view).isChecked();
     }
 
     /**
@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary() {
         String summary = "Name: ShisaQ";
-        summary += "\n" + toppingMsg;
+        summary += "\nWhipped Cream topping: " + isWhippedCreamChecked;
+        summary += "\nChocolate topping: " + isChocolateChecked;
         summary += "\nQuantity: " + number;
         summary += "\nTotal: $" + calculatePrice(number, 10);
         summary += "\nThank you!";
