@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Create order summary
+     * @param name is the user's name
+     * @param price is the total price
+     * @param isWhippedCreamChecked checks if Whipped Cream is checked
+     * @param isChocolateChecked checks if Chocolate is checked
      * @return the summary message
      */
     private String createOrderSummary(String name,

@@ -6,7 +6,7 @@
     tools:context="com.example.android.justjava.MainActivity" >
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
@@ -17,10 +17,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/name_hint"
-        android:inputType="text" />
+        android:inputType="textCapWords" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Toppings"
         android:textAllCaps="true" />
 
