@@ -22,28 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     int number = 0;
     int uniCost = 5;
-    String toppingMsg = "Topping: None";
-    boolean isWhippedCreamChecked = false;
-    boolean isChocolateChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    /**
-     * This method checks if the checkbox of Whipped Cream is checked.
-     */
-    public void checkWhippedCream(View view) {
-        isWhippedCreamChecked = ((CheckBox) view).isChecked();
-    }
-
-    /**
-     * This method checks if the checkbox of chocolate is checked.
-     */
-    public void checkChocolate(View view) {
-        isChocolateChecked = ((CheckBox) view).isChecked();
     }
 
     /**
@@ -67,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String result = createOrderSummary();
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+
+        int price = calculatePrice(number, uniCost);
+        boolean isWhippedCreamChecked = whippedCreamCheckBox.isChecked();
+        boolean isChocolateChecked = chocolateCheckBox.isChecked();
+
+        String result = createOrderSummary(price, isWhippedCreamChecked, isChocolateChecked);
         displayMessage(result);
     }
 
@@ -101,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
      * Create order summary
      * @return the summary message
      */
-    private String createOrderSummary() {
+    private String createOrderSummary(int price,
+                                      boolean isWhippedCreamChecked,
+                                      boolean isChocolateChecked) {
         String summary = "Name: ShisaQ";
         summary += "\nWhipped Cream topping: " + isWhippedCreamChecked;
         summary += "\nChocolate topping: " + isChocolateChecked;
         summary += "\nQuantity: " + number;
-        summary += "\nTotal: $" + calculatePrice(number, 10);
+        summary += "\nTotal: $" + price;
         summary += "\nThank you!";
         return summary;
     }
