@@ -12,6 +12,7 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 /**
@@ -21,11 +22,28 @@ public class MainActivity extends AppCompatActivity {
 
     int number = 0;
     int uniCost = 5;
+    String toppingMsg = "Topping: None";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    /**
+     * This method checks if the checkbox is checked.
+     */
+    public void toppingChecked(View view) {
+        // Is the view now checked?
+        boolean isChecked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        if (isChecked)
+            // Put some topping on java
+            toppingMsg = "Topping: " + getResources().getString(R.string.toppings);
+        else
+            // Remove the topping
+            toppingMsg = "Topping: None";
     }
 
     /**
@@ -85,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary() {
         String summary = "Name: ShisaQ";
+        summary += "\n" + toppingMsg;
         summary += "\nQuantity: " + number;
         summary += "\nTotal: $" + calculatePrice(number, 10);
         summary += "\nThank you!";
