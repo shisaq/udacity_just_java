@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -50,14 +51,16 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        EditText nameView = (EditText) findViewById(R.id.name_view);
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
 
+        String name = nameView.getText().toString();
         int price = calculatePrice(number, uniCost);
         boolean isWhippedCreamChecked = whippedCreamCheckBox.isChecked();
         boolean isChocolateChecked = chocolateCheckBox.isChecked();
 
-        String result = createOrderSummary(price, isWhippedCreamChecked, isChocolateChecked);
+        String result = createOrderSummary(name, price, isWhippedCreamChecked, isChocolateChecked);
         displayMessage(result);
     }
 
@@ -91,10 +94,11 @@ public class MainActivity extends AppCompatActivity {
      * Create order summary
      * @return the summary message
      */
-    private String createOrderSummary(int price,
+    private String createOrderSummary(String name,
+                                      int price,
                                       boolean isWhippedCreamChecked,
                                       boolean isChocolateChecked) {
-        String summary = "Name: ShisaQ";
+        String summary = "Name: " + name;
         summary += "\nWhipped Cream topping: " + isWhippedCreamChecked;
         summary += "\nChocolate topping: " + isChocolateChecked;
         summary += "\nQuantity: " + number;
