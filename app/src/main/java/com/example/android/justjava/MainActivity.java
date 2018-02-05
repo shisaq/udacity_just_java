@@ -9,6 +9,8 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         int price = calculatePrice(number, uniCost, isWhippedCreamChecked, isChocolateChecked);
 
         String result = createOrderSummary(name, price, isWhippedCreamChecked, isChocolateChecked);
-        displayMessage(result);
+//        displayMessage(result);
+        composeEmail(result);
     }
 
     /**
@@ -120,5 +123,18 @@ public class MainActivity extends AppCompatActivity {
         summary += "\nTotal: $" + price;
         summary += "\nThank you!";
         return summary;
+    }
+
+    /**
+     * Intent to email app
+     * @param subject is the text we'll send via email
+     */
+    public void composeEmail(String subject) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
