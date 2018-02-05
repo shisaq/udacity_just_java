@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         int price = calculatePrice(number, uniCost, isWhippedCreamChecked, isChocolateChecked);
 
         String result = createOrderSummary(name, price, isWhippedCreamChecked, isChocolateChecked);
-//        displayMessage(result);
-        composeEmail(result);
+
+        composeEmail(name, result);
     }
 
     /**
@@ -97,14 +97,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView order_summary_text_view = (TextView) findViewById(R.id.order_summary_text_view);
-        order_summary_text_view.setText(message);
-    }
-
-    /**
      * Create order summary
      * @param name is the user's name
      * @param price is the total price
@@ -129,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
      * Intent to email app
      * @param subject is the text we'll send via email
      */
-    public void composeEmail(String subject) {
+    public void composeEmail(String subject, String bodyText) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java for " + subject);
+        intent.putExtra(Intent.EXTRA_TEXT, bodyText);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
