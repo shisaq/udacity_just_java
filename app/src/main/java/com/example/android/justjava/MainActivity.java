@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Intent to email app
-     * @param subject is the text we'll send via email
+     * @param subject is email title
+     * @param bodyText is email body text
      */
     public void composeEmail(String subject, String bodyText) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
