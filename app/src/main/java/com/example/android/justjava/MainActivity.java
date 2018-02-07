@@ -108,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
                                       int price,
                                       boolean isWhippedCreamChecked,
                                       boolean isChocolateChecked) {
-        String summary = "Name: " + name;
-        summary += "\nWhipped Cream topping: " + isWhippedCreamChecked;
-        summary += "\nChocolate topping: " + isChocolateChecked;
-        summary += "\nQuantity: " + number;
-        summary += "\nTotal: $" + price;
-        summary += "\nThank you!";
+        String summary = getString(R.string.order_summary_name, name);
+        summary += "\n" + getString(R.string.whipped_cream_topping) + isWhippedCreamChecked;
+        summary += "\n" + getString(R.string.chocolate_topping) + isChocolateChecked;
+        summary += "\n" + getString(R.string.quantity) + ": " + number;
+        summary += "\n" + getString(R.string.price) + price;
+        summary += "\n" + getString(R.string.thank_you);
         return summary;
     }
 

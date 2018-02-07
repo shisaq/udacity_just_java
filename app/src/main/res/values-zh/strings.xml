@@ -1,0 +1,14 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">爪哇咖啡馆</string>
+    <string name="name_hint">请输入你的名字...</string>
+    <string name="toppings">配料</string>
+    <string name="whipped_cream">生奶油</string>
+    <string name="chocolate">巧克力</string>
+    <string name="quantity">数量</string>
+    <string name="order">下单</string>
+    <string name="order_summary_name">姓名：<xliff:g id="name" example="Amy">%s</xliff:g></string>
+    <string name="whipped_cream_topping">是否加生奶油：</string>
+    <string name="chocolate_topping">是否加巧克力：</string>
+    <string name="price">总价：</string>
+    <string name="thank_you">谢谢！</string>
+</resources>
