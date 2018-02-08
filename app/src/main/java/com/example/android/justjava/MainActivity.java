@@ -9,14 +9,22 @@
 package com.example.android.justjava;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 /**
  * This app displays an order form to order coffee.
@@ -30,6 +38,79 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // sets the current radio to be default
+        Locale currentLocale = getCurrentLocale(this);
+        setDefaultRadio(currentLocale.getLanguage());
+    }
+
+    /**
+     * This method sets the default radio
+     * @param localeName is the current locale language abbreviation
+     */
+    private void setDefaultRadio(String localeName) {
+        switch (localeName) {
+            case "zh":
+                RadioButton zhRadio = (RadioButton) findViewById(R.id.radio_chinese);
+                zhRadio.setChecked(true);
+                break;
+            default:
+                RadioButton enRadio = (RadioButton) findViewById(R.id.radio_english);
+                enRadio.setChecked(true);
+                break;
+        }
+    }
+
+    /**
+     * This method changes the current language
+     */
+    public void onLanguagePick(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which language was clicked
+        switch(view.getId()) {
+            case R.id.radio_english:
+                if (checked)
+                    setCurrentLocale(this,"en");
+                    break;
+            case R.id.radio_chinese:
+                if (checked)
+                    setCurrentLocale(this,"zh");
+                    break;
+        }
+    }
+
+    /**
+     * Get the current locale
+     */
+    private Locale getCurrentLocale(Context context){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            return context.getResources().getConfiguration().getLocales().get(0);
+        } else{
+            //noinspection deprecation
+            return context.getResources().getConfiguration().locale;
+        }
+    }
+
+    /**
+     * This method sets locale from the param
+     * has not worked yet
+     */
+    private void setCurrentLocale(Context context, String language) {
+        Locale languageToSet = new Locale(language);
+        Resources resources = getBaseContext().getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            configuration.setLocale(languageToSet);
+            context.createConfigurationContext(configuration);
+        } else {
+            //noinspection deprecation
+            configuration.locale = languageToSet;
+            resources.updateConfiguration(configuration,displayMetrics);
+        }
     }
 
     /**

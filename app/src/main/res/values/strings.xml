@@ -1,5 +1,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Just Java</string>
+    <string name="english">English</string>
+    <string name="chinese">中文</string>
     <string name="name_hint">Enter your name here&#8230;</string>
     <string name="toppings">Toppings</string>
     <string name="whipped_cream">Whipped cream</string>
