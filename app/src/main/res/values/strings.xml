@@ -7,6 +7,8 @@
     <string name="whipped_cream">Whipped cream</string>
     <string name="chocolate">Chocolate</string>
     <string name="quantity">Quantity</string>
+    <string name="minus_symbol">-</string>
+    <string name="plus_symbol">+</string>
     <string name="order">Order</string>
     <string name="order_summary_name">Name: <xliff:g id="name" example="Amy">%s</xliff:g></string>
     <string name="whipped_cream_topping">Whipped Cream topping: </string>

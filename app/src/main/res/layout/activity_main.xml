@@ -5,47 +5,40 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.justjava.MainActivity" >
 <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    style="@style/matchPWrapC"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical" >
 
     <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        style="@style/matchPWrapC"
         android:orientation="horizontal">
         <RadioButton android:id="@+id/radio_english"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrapCWrapC"
             android:text="@string/english"
             android:onClick="onLanguagePick"/>
         <RadioButton android:id="@+id/radio_chinese"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrapCWrapC"
             android:text="@string/chinese"
             android:onClick="onLanguagePick"/>
     </RadioGroup>
 
     <EditText
         android:id="@+id/name_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        style="@style/matchPWrapC"
         android:hint="@string/name_hint"
         android:inputType="textCapWords" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/matchPWrapC"
         android:layout_marginTop="16dp"
         android:text="@string/toppings"
         android:textAllCaps="true" />
 
     <CheckBox
         android:id="@+id/whipped_cream_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrapCWrapC"
         android:layout_marginTop="16dp"
         android:paddingLeft="24dp"
         android:text="@string/whipped_cream"
@@ -53,37 +46,33 @@
 
     <CheckBox
         android:id="@+id/chocolate_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrapCWrapC"
         android:layout_marginTop="16dp"
         android:paddingLeft="24dp"
         android:text="@string/chocolate"
         android:textSize="16sp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/matchPWrapC"
         android:layout_marginTop="16dp"
         android:text="@string/quantity"
         android:textAllCaps="true" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/matchPWrapC"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/decrement"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:text="-"
+            android:text="@string/minus_symbol"
             android:textAllCaps="true"
             android:onClick="decrement"/>
 
         <TextView
             android:id="@+id/quantity_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrapCWrapC"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:text="0"
@@ -94,15 +83,14 @@
             android:id="@+id/increment"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:text="+"
+            android:text="@string/plus_symbol"
             android:textAllCaps="true"
             android:onClick="increment"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/orderBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrapCWrapC"
         android:layout_marginTop="16dp"
         android:text="@string/order"
         android:textAllCaps="true"

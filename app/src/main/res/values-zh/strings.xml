@@ -13,4 +13,6 @@
     <string name="chocolate_topping">是否加巧克力：</string>
     <string name="price">总价：</string>
     <string name="thank_you">谢谢！</string>
+    <string name="minus_symbol">-</string>
+    <string name="plus_symbol">+</string>
 </resources>
